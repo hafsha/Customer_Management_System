@@ -1,0 +1,21 @@
+
+
+#logo{
+
+    }
+    body{
+    background-color: darksalmon;
+    }
+    #total-orders{
+    background-color: gold;
+   
+    }
+    #orders-delivred{
+    background-color: hotpink;
+   
+    }
+    #orders-pending{
+    background-color: lawngreen;
+   
+    }
+

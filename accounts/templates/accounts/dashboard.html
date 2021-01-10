@@ -1,0 +1,96 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+{% include 'accounts/status.html' %}
+
+<style>
+  .min-height{
+        min-height: 200px;
+  }
+</style>
+<br>
+      <div class="row mx-0">
+            <div class="col">
+                  <div class="card card-body">
+                      <form method="get">
+                              {{myFilter.form}}
+                            <button class="btn btn-primary" type="submit">Search</button>
+                      </form>
+                  </div>
+         
+            </div>
+      </div>
+
+<br>
+      <div class="row mx-0">
+        <div class="col-md-5">
+          
+          <h5>CUSTOMERS</h5>
+        
+          <hr>
+          <div class="card card-body min-height">
+            <a class="btn btn-primary btn-$m btn" href="">Create Customer</a>
+            
+            <table class="table table-$m">
+              <tr>
+
+                <th></th>
+                
+                <th>Customer</th>
+                <th>Phone</th>
+              </tr>
+              <tr>
+                {% for customer in customers %}
+                  <tr>
+
+                    <td><a class="btn btn-primary btn-$m btn-info"href="{% url 'customers' customer.id%}">View</a></td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.phone}}</td>
+                  </tr>
+                {% endfor %}
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="col-md-7">
+          
+          <h5>Last 5 ORDERS</h5>
+          
+         
+          <hr>
+          <div class="card card-body min-height">
+            
+            <table class="table table-$m">
+              <tr>
+                
+                <th>Product</th>
+                <th>Date Ordered</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Remove</th>
+              </tr>
+              <tr>
+                {% for order in orders %}
+                  <tr>
+                   
+                    <td>{{order.product}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status}}</td>
+                    <td><a class="btn btn-primary btn-$m btn-info"href="{% url 'update_order' order.id %}">Update</a></td>
+                    <td><a class="btn btn-primary btn-$m btn-danger"href="{% url 'delete_order' order.id %}">Delete</a></td>
+                  </tr>
+                {% endfor %}
+              </tr>
+
+             
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+{% endblock %} 
+
+
